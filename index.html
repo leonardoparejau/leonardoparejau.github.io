@@ -238,6 +238,17 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .box:hover {
+            transform: scale(1.05);
+        }
+        .box-content {
+            display: none;
+            text-align: left;
+            font-size: 16px;
         }
 
         @media (min-width: 768px) {
@@ -324,7 +335,10 @@
                 banner.style.marginTop = '0';
             }
         });
-
+        function toggleBoxContent(element) {
+            let content = element.querySelector('.box-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
     </script>
 </head>
 <body>
@@ -426,74 +440,121 @@
         <p data-lang="es">Impulsamos negocios con tecnologías de vanguardia. Descubre nuestra experiencia en las plataformas y herramientas más innovadoras</p>
         <div class="capabilities">
             <div class="grid">
-                <div class="box">
-                    <h3 data-lang="en" style="display: none;">API MANAGEMENT</h3>
-                    <h3 data-lang="es">GESTIÓN DE APIS</h3>
-                    <p>3Scale</p>
-                    <p>Kong</p>
-                    <p>Azure APIM</p>
-                    <p>AWS API Gateway</p>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box">
+                        <h3 data-lang="en" style="display: none;">DEVELOPMENT</h3>
+                        <h3 data-lang="es">DESARROLLO</h3>
+                        <div class="box-content">
+                            <p>Python</p>
+                            <p>NodeJS</p>
+                            <p>Java</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="box">
-                    <h3 data-lang="en" style="display: none;">LOAD BALANCERS</h3>
-                    <h3 data-lang="es">BALANCEADORES DE CARGA</h3>
-                    <p>NGINX</p>
-                    <p>Apache</p>
-                    <p>Cisco F5</p>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box">
+                        <h3 data-lang="en" style="display: none;">API MANAGEMENT</h3>
+                        <h3 data-lang="es">GESTIÓN DE APIS</h3>
+                        <div class="box-content">
+                            <p>3Scale</p>
+                            <p>Kong</p>
+                            <p>Azure APIM</p>
+                            <p>AWS API Gateway</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="box">
-                    <h3 data-lang="en" style="display: none;">CONTAINER PLATFORM</h3>
-                    <h3 data-lang="es">PLATAFORMAS DE CONTENEDORES</h3>
-                    <p>Kubernetes</p>
-                    <p>AKS</p>
-                    <p>Rancher</p>
-                    <p>OpenShift</p>
-                    <p>EKS</p>
-                    <p>Tanzu</p>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box">
+                        <h3 data-lang="en" style="display: none;">LOAD BALANCERS</h3>
+                        <h3 data-lang="es">BALANCEADORES DE CARGA</h3>
+                        <div class="box-content">
+                            <p>NGINX</p>
+                            <p>Apache</p>
+                            <p>Cisco F5</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="box">
-                    <h3 data-lang="en" style="display: none;">OBSERVABILITY</h3>
-                    <h3 data-lang="es">OBSERVABILIDAD</h3>
-                    <p>Elastic</p>
-                    <p>DataDog</p>
-                    <p>Grafana</p>
-                    <p>New Relic</p>
-                    <p>Dynatrace</p>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box">
+                        <h3 data-lang="en" style="display: none;">CONTAINER PLATFORM</h3>
+                        <h3 data-lang="es">PLATAFORMAS DE CONTENEDORES</h3>
+                        <div class="box-content">
+                            <p>Kubernetes</p>
+                            <p>AKS</p>
+                            <p>Rancher</p>
+                            <p>OpenShift</p>
+                            <p>EKS</p>
+                            <p>Tanzu</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="box">
-                    <h3 data-lang="en" style="display: none;">AUTOMATION & IaC</h3>
-                    <h3 data-lang="es">AUTOMATIZACIÓN & INFRAESTRUCTURA COMO CÓDIGO</h3>
-                    <p>Ansible</p>
-                    <p>Terraform</p>
-                    <p>Bicep</p>
-                    <p>CloudFormation</p>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box">
+                        <h3 data-lang="en" style="display: none;">OBSERVABILITY</h3>
+                        <h3 data-lang="es">OBSERVABILIDAD</h3>
+                        <div class="box-content">
+                            <p>Elastic</p>
+                            <p>DataDog</p>
+                            <p>Grafana</p>
+                            <p>New Relic</p>
+                            <p>Dynatrace</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="box">
-                    <h3>DEVOPS</h3>
-                    <p>Git Management</p>
-                    <p>CICD Tools</p>
-                    <p>Static Code Analysis</p>
-                    <p>Artifact Management</p>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box">
+                        <h3 data-lang="en" style="display: none;">AUTOMATION & IaC</h3>
+                        <h3 data-lang="es">AUTOMATIZACIÓN & INFRAESTRUCTURA COMO CÓDIGO</h3>
+                        <div class="box-content">
+                            <p>Ansible</p>
+                            <p>Terraform</p>
+                            <p>Bicep</p>
+                            <p>CloudFormation</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="box">
-                    <h3>GITOPS</h3>
-                    <p>ArgoCD</p>
-                    <p>Flux</p>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box">
+                        <h3>DEVOPS</h3>
+                        <div class="box-content">
+                            <p>Git Management</p>
+                            <p>CICD Tools</p>
+                            <p>Static Code Analysis</p>
+                            <p>Artifact Management</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="box">
-                    <h3>MLOPS</h3>
-                    <p>SageMaker</p>
-                    <p>Langchain</p>
-                    <p>Pinecone</p>
-                    <p>Chroma</p>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box">
+                        <h3>GITOPS</h3>
+                        <div class="box-content">
+                            <p>ArgoCD</p>
+                            <p>Flux</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="box infrastructure">
-                    <h3 data-lang="en" style="display: none;">INFRASTRUCTURE</h3>
-                    <h3 data-lang="es">INFRAESTRUCTURA</h3>
-                    <p>AWS</p>
-                    <p>Azure</p>
-                    <p>Google Cloud</p>
-                    <p>OnPremise</p>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box">
+                        <h3>MLOPS</h3>
+                        <div class="box-content">
+                            <p>SageMaker</p>
+                            <p>Langchain</p>
+                            <p>Pinecone</p>
+                            <p>Chroma</p>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="toggleBoxContent(this)">
+                    <div class="box infrastructure">
+                        <h3 data-lang="en" style="display: none;">INFRASTRUCTURE</h3>
+                        <h3 data-lang="es">INFRAESTRUCTURA</h3>
+                        <div class="box-content">
+                            <p>AWS</p>
+                            <p>Azure</p>
+                            <p>Google Cloud</p>
+                            <p>OnPremise</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
