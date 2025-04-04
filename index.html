@@ -53,6 +53,11 @@
                 updateSlide();
             }
 
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlide();
+            }
+
             function createDots() {
                 dotsContainer.innerHTML = "";
                 for (let i = 0; i < totalSlides; i++) {
@@ -63,6 +68,34 @@
                 }
                 updateDots();
             }
+
+            bannerContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                touchCurrentX = touchStartX;
+            });
+
+            bannerContainer.addEventListener('touchmove', (e) => {
+                touchCurrentX = e.touches[0].clientX;
+                const diffX = touchStartX - touchCurrentX;
+                const slideWidth = bannerContainer.offsetWidth / totalSlides;
+                const translateX = (-currentIndex * (100 / totalSlides)) + (diffX / slideWidth * (100 / totalSlides));
+                bannerContainer.style.transform = `translateX(${translateX}%)`; // Smooth drag effect
+                e.preventDefault(); // Prevent scrolling while swiping
+            });
+
+            bannerContainer.addEventListener('touchend', (e) => {
+                touchEndX = touchCurrentX;
+                const diffX = touchStartX - touchEndX;
+                const threshold = bannerContainer.offsetWidth / totalSlides / 3; // Swipe threshold (1/3 of slide width)
+
+                if (diffX > threshold) {
+                    nextSlide(); // Swipe left
+                } else if (diffX < -threshold) {
+                    prevSlide(); // Swipe right
+                } else {
+                    updateSlide(); // Snap back to current slide
+                }
+            });
 
             createDots();
             updateSlide();
@@ -81,6 +114,7 @@
             let content = element.querySelector('.box-content');
             content.style.display = content.style.display === 'block' ? 'none' : 'block';
         }
+
     </script>
 </head>
 <body>
@@ -96,8 +130,8 @@
             <a href="#services" data-lang="en" style="display: none;">Services</a>
             <a href="#technologies" data-lang="es">Tecnologías</a>
             <a href="#technologies" data-lang="en" style="display: none;">Technologies</a>
-            <a href="#about" data-lang="es">Sobre Nosotros</a>
-            <a href="#about" data-lang="en" style="display: none;">About Us</a>
+            <a href="#clients" data-lang="es">Clientes</a>
+            <a href="#clients" data-lang="en" style="display: none;">Clients</a>
             <a href="#contact" data-lang="es">Contacto</a>
             <a href="#contact" data-lang="en" style="display: none;">Contact</a>
         </nav>
@@ -116,8 +150,9 @@
         <div class="banner-dots" id="banner-dots"></div>
 
     </section>
-        <section id="services">
-            <h2>Our Services</h2>
+        <section id="services" class="clients-section">
+            <h2 data-lang="en" style="display: none;">Our Services</h2>
+            <h2 data-lang="es">Nuestros servicios</h2>
 
         <section class="services">
             <div class="service">
@@ -175,7 +210,7 @@
         </section>
     </section>
 
-    <section id="technologies">
+    <section id="technologies"  class="clients-section">
         <h2 data-lang="en" style="display: none;">Technologies</h2>
         <h2 data-lang="es">Tecnologías</h2>
         <p data-lang="en" style="display: none;">Empowering businesses with cutting-edge technologies. Explore our expertise across the latest platforms and tools that drive innovation and efficiency</p>
@@ -301,9 +336,36 @@
             </div>
         </div>
     </section>
+
+    <section id="clients" class="clients-section">
+        <h2 data-lang="en" style="display: none;">Trusted by Industry Leaders</h2>
+        <h2 data-lang="es">Lideres en la industria confian en nosotros</h2>
+        <div class="clients-container">
+            <div class="client-card">
+                <img src="images/orcan_logo.png" alt="Orcan">
+                <p>Orcan Intelligence</p>
+            </div>
+            <div class="client-card">
+                <img src="images/ibermatica-logo.png" alt="Ibermatica">
+                <p>Ibermática</p>
+            </div>
+            <div class="client-card">
+                <img src="images/silverlink_logo.png" alt="Silverlink">
+                <p>Silverlink Technologies</p>
+            </div>
+            <div class="client-card">
+                <img src="images/canvia_logo.jpg" alt="canvia">
+                <p>Canvia</p>
+            </div>
+            <div class="client-card">
+                <img src="images/atentus_logo.jpg" alt="atentus">
+                <p>Atentus</p>
+            </div>
+        </div>
+    </section>
     
     
-    <section id="contact">
+    <section id="contact" class="clients-section">
         <h2 data-lang="en" style="display: none;">Contact Us</h2>
         <h2 data-lang="es">Contáctanos</h2>
         <p>Email: lpareja@misofconsulting.com</p>
