@@ -1,0 +1,150 @@
+// Spanish strings. English lives directly in the HTML and is captured at runtime,
+// so every key used in a data-i18n / data-i18n-attr attribute only needs an entry here.
+window.MISOF_I18N_ES = {
+    // Meta
+    'meta.title': 'Misof Consulting — Consultoría Cloud, DevOps e Ingeniería de Plataformas',
+    'meta.description': 'Consultoría IT especializada en cloud, DevOps, GitOps, Kubernetes, infraestructura como código, observabilidad y automatización con IA (n8n y LangChain). Partner certificado de monday.com para empresas de todos los tamaños en Europa y LATAM.',
+    'meta.privacyTitle': 'Política de Privacidad | Misof Consulting',
+    'meta.privacyDescription': 'Cómo Misof Consulting recopila, utiliza y protege la información personal.',
+
+    // Accessibility
+    'a11y.skip': 'Saltar al contenido',
+    'a11y.home': 'Misof Consulting — inicio',
+    'a11y.mainNav': 'Principal',
+    'a11y.footerNav': 'Pie de página',
+    'a11y.language': 'Idioma',
+    'a11y.menu': 'Menú',
+
+    // Navigation
+    'nav.services': 'Servicios',
+    'nav.why': 'Por qué Misof',
+    'nav.technologies': 'Tecnologías',
+    'nav.approach': 'Cómo trabajamos',
+    'nav.cta': 'Hablemos',
+
+    // Hero
+    'hero.eyebrow': 'Consultoría IT · Cloud · DevOps · IA',
+    'hero.title': 'Plataformas fiables, <span class="text-gradient">entregadas más rápido.</span>',
+    'hero.lead': 'Ayudamos a las empresas a diseñar, automatizar y operar infraestructura cloud moderna — desde CI/CD y Kubernetes hasta observabilidad y automatización con IA — para que tus equipos entreguen con confianza.',
+    'hero.ctaPrimary': 'Cuéntanos tu proyecto',
+    'hero.ctaSecondary': 'Ver servicios',
+    'hero.stat1': 'años de experiencia comprobada',
+    'hero.stat2': 'presencia a ambos lados del Atlántico',
+    'hero.stat3Value': 'Toda empresa',
+    'hero.stat3': 'de startups a grandes corporaciones',
+    'hero.card': 'Despliegue completado',
+
+    // Images
+    'img.hero': 'Ventiladores de servidores iluminados en morado y rosa dentro de un centro de datos',
+    'img.engineer': 'Ingeniero trabajando con código en varios monitores',
+    'img.team': 'Dos ingenieros revisando código juntos en una oficina',
+
+    // Clients & partners
+    'clients.title': 'Confían en nosotros',
+    'partners.title': 'Partner certificado de',
+    'partners.certified': 'Partner Certificado',
+
+    // Services
+    'services.eyebrow': 'Qué hacemos',
+    'services.title': 'Experiencia integral en infraestructura moderna',
+    'services.lead': 'De la estrategia a producción, cubrimos cada capa de tu plataforma.',
+    'services.ai.tag': 'Nuevo',
+    'services.ai.title': 'IA y Automatización Inteligente',
+    'services.ai.text': 'No nos quedamos en el prototipo: desplegamos flujos de n8n y aplicaciones LLM sobre infraestructura segura y observable — autoalojadas en tu Kubernetes o en tu nube, para que tus datos sigan siendo tuyos.',
+    'services.ai.chipAgents': 'Agentes de IA',
+    'services.ai.chipVector': 'Bases de datos vectoriales',
+    'services.ai.u1.title': 'Asistentes de conocimiento',
+    'services.ai.u1.text': 'Conversa con tu propia documentación, políticas y tickets mediante generación aumentada por recuperación (RAG).',
+    'services.ai.u2.title': 'Automatización de procesos con n8n y monday.com',
+    'services.ai.u2.text': 'Conecta tu CRM, correo, ticketing y sistemas internos para eliminar tareas manuales repetitivas.',
+    'services.ai.u3.title': 'Agentes de IA',
+    'services.ai.u3.text': 'Agentes basados en LangChain que actúan sobre tus APIs y datos, con controles y monitorización integrados.',
+    'services.s1.title': 'Consultoría IT',
+    'services.s1.text': 'Estrategia tecnológica y asesoría experta para impulsar la eficiencia, la innovación y el crecimiento de tu negocio.',
+    'services.s2.text': 'Entrega de software más rápida y segura con automatización, CI/CD y mejora continua.',
+    'services.s3.text': 'Aplicaciones e infraestructura gestionadas de forma declarativa desde Git: consistentes, auditables y seguras.',
+    'services.s4.title': 'Gestión de APIs',
+    'services.s4.text': 'Protege, monitoriza y escala tus APIs para una integración fluida en todo tu ecosistema digital.',
+    'services.s5.title': 'Infraestructura como Código',
+    'services.s5.text': 'Entornos automatizados, estandarizados y reproducibles, consistentes desde desarrollo hasta producción.',
+    'services.s6.title': 'Soluciones Cloud',
+    'services.s6.text': 'Arquitecturas escalables y seguras en AWS, Azure y Google Cloud, adaptadas a tu negocio.',
+    'services.s7.title': 'Plataformas de Contenedores',
+    'services.s7.text': 'Opera aplicaciones en Kubernetes y OpenShift con agilidad y portabilidad, en la nube o en tus instalaciones.',
+    'services.s8.title': 'Observabilidad',
+    'services.s8.text': 'Visibilidad en tiempo real de tus sistemas para detectar incidencias a tiempo y optimizar el rendimiento.',
+    'services.s9.title': 'Soluciones IoT',
+    'services.s9.text': 'Conecta dispositivos y convierte sus datos en información útil para tomar mejores decisiones.',
+
+    // Why
+    'why.eyebrow': 'Por qué Misof',
+    'why.title': 'Ingenieros que construyen, no solo asesoran',
+    'why.lead': 'Trabajamos junto a tu equipo para diseñar, implementar y entregar plataformas seguras, automatizadas y fáciles de operar.',
+    'why.badge': 'años construyendo plataformas en producción',
+    'why.f1.title': 'Todo como código',
+    'why.f1.text': 'Infraestructura, pipelines y políticas versionadas, revisadas y reproducibles.',
+    'why.f2.title': 'Independientes de proveedor',
+    'why.f2.text': 'Recomendamos lo que encaja en tu contexto: AWS, Azure, Google Cloud u on-premise.',
+    'why.f3.title': 'Transferencia de conocimiento',
+    'why.f3.text': 'Documentación y formación práctica para que tu equipo sea dueño del resultado.',
+    'why.f4.title': 'Europa y LATAM',
+    'why.f4.text': 'Colaboración bilingüe en español e inglés, con horarios de trabajo compatibles.',
+
+    // Technologies
+    'tech.eyebrow': 'Tecnologías',
+    'tech.title': 'Experiencia profunda en el stack moderno',
+    'tech.lead': 'Trabajamos con las plataformas y herramientas que impulsan los sistemas más fiables de hoy.',
+    'tech.infra': 'Infraestructura',
+    'tech.onprem': 'On-premise',
+    'tech.containers': 'Plataformas de contenedores',
+    'tech.iac': 'Automatización e IaC',
+    'tech.git': 'Gestión de Git',
+    'tech.cicd': 'Herramientas CI/CD',
+    'tech.sca': 'Análisis estático de código',
+    'tech.artifacts': 'Gestión de artefactos',
+    'tech.observability': 'Observabilidad',
+    'tech.api': 'Gestión de APIs',
+    'tech.lb': 'Balanceo de carga',
+    'tech.dev': 'Desarrollo',
+    'tech.ai': 'IA y MLOps',
+
+    // Approach
+    'approach.eyebrow': 'Cómo trabajamos',
+    'approach.title': 'Un camino claro de la idea a producción',
+    'approach.s1.title': 'Diagnóstico',
+    'approach.s1.text': 'Analizamos tu arquitectura, procesos y objetivos actuales para identificar las oportunidades de mayor impacto.',
+    'approach.s2.title': 'Diseño',
+    'approach.s2.text': 'Definimos una arquitectura objetivo y una hoja de ruta pragmática, alineada con las prioridades de tu negocio.',
+    'approach.s3.title': 'Implementación',
+    'approach.s3.text': 'Construimos de forma iterativa: automatizado, probado y documentado desde el primer día.',
+    'approach.s4.title': 'Operación y evolución',
+    'approach.s4.text': 'Acompañamos, monitorizamos y mejoramos tu plataforma de forma continua, transfiriendo el conocimiento a tu equipo.',
+
+    // Contact
+    'contact.eyebrow': 'Contacto',
+    'contact.title': 'Construyamos algo fiable juntos',
+    'contact.lead': 'Cuéntanos tu reto — una migración, una nueva plataforma o un pipeline que necesita mejoras — y te responderemos a la brevedad.',
+    'contact.email': 'Escríbenos',
+    'contact.call': 'Llámanos',
+    'contact.available': 'Disponibles para nuevos proyectos',
+    'contact.emailLabel': 'Correo',
+    'contact.phoneLabel': 'Teléfono',
+    'contact.languagesLabel': 'Idiomas',
+    'contact.languages': 'Español · Inglés',
+    'contact.copy': 'Copiar',
+    'contact.copied': '¡Copiado!',
+
+    // Footer
+    'footer.tagline': 'Consultoría IT especializada en cloud, DevOps e ingeniería de plataformas.',
+    'footer.explore': 'Explorar',
+    'footer.contact': 'Contacto',
+    'footer.legal': 'Legal',
+    'footer.privacy': 'Política de Privacidad',
+    'footer.rights': 'Todos los derechos reservados.',
+
+    // Privacy page
+    'privacy.eyebrow': 'Legal',
+    'privacy.title': 'Política de Privacidad',
+    'privacy.updated': 'Última actualización: 26 de septiembre de 2026',
+    'privacy.back': '← Volver al inicio'
+};
