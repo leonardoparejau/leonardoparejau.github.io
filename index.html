@@ -1,380 +1,508 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misof Consulting</title>
+    <title data-i18n="meta.title">Misof Consulting — Cloud, DevOps &amp; Platform Engineering</title>
+    <meta name="description" data-i18n-attr="content:meta.description" content="IT consultancy specialized in cloud, DevOps, GitOps, Kubernetes, infrastructure as code, observability and AI automation with n8n and LangChain. Certified monday.com partner serving companies of all sizes across Europe and LATAM.">
+    <meta name="theme-color" content="#0C0A1A">
+    <link rel="canonical" href="https://misofconsulting.com/">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Misof Consulting">
+    <meta property="og:url" content="https://misofconsulting.com/">
+    <meta property="og:title" content="Misof Consulting — Cloud, DevOps &amp; Platform Engineering">
+    <meta property="og:description" content="IT consultancy specialized in cloud, DevOps, Kubernetes, infrastructure automation and AI. Europe &amp; LATAM.">
+    <meta property="og:image" content="https://misofconsulting.com/images/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preload" href="fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/jakarta-var-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/styles.css">
-    <script>
-        function toggleMenu() {
-            const nav = document.querySelector('nav');
-            const banner = document.querySelector('.banner');
-            nav.classList.toggle('open');
-            if (nav.classList.contains('open')) {
-                banner.style.marginTop = nav.offsetHeight - 1 + 'px';
-            } else {
-                banner.style.marginTop = '0';
-            }
-        }
-        function switchLanguage(lang) {
-            const elements = document.querySelectorAll('[data-lang]');
-            elements.forEach(el => {
-                el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
-            });
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            switchLanguage('en');
 
-            let currentIndex = 0;
-            const bannerContainer = document.getElementById("banner-container");
-            const slides = document.querySelectorAll(".banner-item");
-            const totalSlides = slides.length;
-            const dotsContainer = document.getElementById("banner-dots");
-
-            function updateSlide() {
-                const slideWidthPercentage = currentIndex * (100 / totalSlides);
-                bannerContainer.style.transform = `translateX(-${slideWidthPercentage}%)`;
-                updateDots();
-            }
-
-            function updateDots() {
-                document.querySelectorAll(".dot").forEach((dot, index) => {
-                    dot.classList.toggle("active", index === currentIndex);
-                });
-            }
-
-            function goToSlide(index) {
-                currentIndex = index;
-                updateSlide();
-            }
-
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateSlide();
-            }
-
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                updateSlide();
-            }
-
-            function createDots() {
-                dotsContainer.innerHTML = "";
-                for (let i = 0; i < totalSlides; i++) {
-                    const dot = document.createElement("div");
-                    dot.classList.add("dot");
-                    dot.addEventListener("click", () => goToSlide(i));
-                    dotsContainer.appendChild(dot);
-                }
-                updateDots();
-            }
-
-            bannerContainer.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-                touchCurrentX = touchStartX;
-            });
-
-            bannerContainer.addEventListener('touchmove', (e) => {
-                touchCurrentX = e.touches[0].clientX;
-                const diffX = touchStartX - touchCurrentX;
-                const slideWidth = bannerContainer.offsetWidth / totalSlides;
-                const translateX = (-currentIndex * (100 / totalSlides)) + (diffX / slideWidth * (100 / totalSlides));
-                bannerContainer.style.transform = `translateX(${translateX}%)`; // Smooth drag effect
-                e.preventDefault(); // Prevent scrolling while swiping
-            });
-
-            bannerContainer.addEventListener('touchend', (e) => {
-                touchEndX = touchCurrentX;
-                const diffX = touchStartX - touchEndX;
-                const threshold = bannerContainer.offsetWidth / totalSlides / 3; // Swipe threshold (1/3 of slide width)
-
-                if (diffX > threshold) {
-                    nextSlide(); // Swipe left
-                } else if (diffX < -threshold) {
-                    prevSlide(); // Swipe right
-                } else {
-                    updateSlide(); // Snap back to current slide
-                }
-            });
-
-            createDots();
-            updateSlide();
-            setInterval(nextSlide, 10000);
-        });
-        window.addEventListener('resize', () => {
-            const nav = document.querySelector('nav');
-            const banner = document.querySelector('.banner');
-
-            if (window.innerWidth > 768) {
-                nav.classList.remove('open');
-                banner.style.marginTop = '0';
-            }
-        });
-        function toggleBoxContent(element) {
-            let content = element.querySelector('.box-content');
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        }
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Misof Consulting",
+        "url": "https://misofconsulting.com/",
+        "logo": "https://misofconsulting.com/images/logo-mark.svg",
+        "image": "https://misofconsulting.com/images/og-image.jpg",
+        "email": "lpareja@misofconsulting.com",
+        "telephone": "+34 642 001 295",
+        "areaServed": ["Europe", "Latin America"],
+        "knowsLanguage": ["es", "en"],
+        "description": "IT consultancy specialized in cloud, DevOps, GitOps, Kubernetes, infrastructure as code, observability and AI automation. Certified monday.com partner."
+    }
     </script>
 </head>
-<body>
-    <header>
-        <img src="images/MISOF-Logo_2.png" alt="Misof Consulting">
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <nav>
-            <a href="#services" data-lang="es">Servicios</a>
-            <a href="#services" data-lang="en" style="display: none;">Services</a>
-            <a href="#technologies" data-lang="es">Tecnologías</a>
-            <a href="#technologies" data-lang="en" style="display: none;">Technologies</a>
-            <a href="#clients" data-lang="es">Clientes</a>
-            <a href="#clients" data-lang="en" style="display: none;">Clients</a>
-            <a href="#contact" data-lang="es">Contacto</a>
-            <a href="#contact" data-lang="en" style="display: none;">Contact</a>
-        </nav>
-        <div class="language-switch">
-            <button onclick="switchLanguage('es')">🇪🇸 ES</button>
-            <button onclick="switchLanguage('en')">🇬🇧 EN</button>
+<body id="top">
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+    <header class="site-header" data-header>
+        <div class="container header-inner">
+            <a class="brand" href="#top" data-i18n-attr="aria-label:a11y.home" aria-label="Misof Consulting — home">
+                <svg class="brand-mark" viewBox="0 0 767 524" aria-hidden="true"><polygon fill="#C237DB" points="212,0 370,158 370,466 366,469 228,333"/><polygon fill="#A030F2" points="555,0 397,158 397,466 401,469 539,333"/><rect fill="#F230C7" width="228" height="524" rx="18"/><rect fill="#672EE8" x="539" width="228" height="524" rx="18"/></svg>
+                <span class="brand-text"><span class="brand-name">MISOF</span><span class="brand-sub">CONSULTING</span></span>
+            </a>
+
+            <nav class="site-nav" id="site-nav" data-i18n-attr="aria-label:a11y.mainNav" aria-label="Main">
+                <a href="#services" data-i18n="nav.services">Services</a>
+                <a href="#why" data-i18n="nav.why">Why Misof</a>
+                <a href="#technologies" data-i18n="nav.technologies">Technologies</a>
+                <a href="#approach" data-i18n="nav.approach">How we work</a>
+                <a href="#contact" class="nav-cta btn btn-primary" data-i18n="nav.cta">Let's talk</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="lang-switch" role="group" data-i18n-attr="aria-label:a11y.language" aria-label="Language">
+                    <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+                    <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+                </div>
+                <a href="#contact" class="btn btn-primary btn-sm header-cta" data-i18n="nav.cta">Let's talk</a>
+                <button type="button" class="menu-toggle" aria-controls="site-nav" aria-expanded="false" data-i18n-attr="aria-label:a11y.menu" aria-label="Menu">
+                    <span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <section class="banner">
-        <div class="banner-container" id="banner-container">
-            <div class="banner-item">More than 6 year of proven experience</div>
-            <div class="banner-item">Presence in EUROPE and LATAM</div>
-            <div class="banner-item">IT solution to all size enterprises</div>
-        </div>
-        <div class="banner-dots" id="banner-dots"></div>
+    <main id="main">
+        <!-- ============ HERO ============ -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow eyebrow-dark reveal" data-i18n="hero.eyebrow">IT Consultancy · Cloud · DevOps · AI</p>
+                    <h1 class="reveal" style="--d:1" data-i18n="hero.title">Reliable platforms, <span class="text-gradient">delivered faster.</span></h1>
+                    <p class="hero-lead reveal" style="--d:2" data-i18n="hero.lead">We help companies design, automate and run modern cloud infrastructure — from CI/CD and Kubernetes to observability and AI automation — so your teams can ship with confidence.</p>
+                    <div class="hero-actions reveal" style="--d:3">
+                        <a href="#contact" class="btn btn-primary btn-lg">
+                            <span data-i18n="hero.ctaPrimary">Tell us about your project</span>
+                            <svg class="icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                        <a href="#services" class="btn btn-ghost btn-lg" data-i18n="hero.ctaSecondary">Explore services</a>
+                    </div>
+                    <dl class="hero-stats reveal" style="--d:4">
+                        <div>
+                            <dt class="text-gradient">6+</dt>
+                            <dd data-i18n="hero.stat1">years of proven experience</dd>
+                        </div>
+                        <div>
+                            <dt class="text-gradient">EU · LATAM</dt>
+                            <dd data-i18n="hero.stat2">presence on both sides of the Atlantic</dd>
+                        </div>
+                        <div>
+                            <dt class="text-gradient" data-i18n="hero.stat3Value">All sizes</dt>
+                            <dd data-i18n="hero.stat3">from startups to large enterprises</dd>
+                        </div>
+                    </dl>
+                </div>
 
-    </section>
-        <section id="services" class="clients-section">
-            <h2 data-lang="en" style="display: none;">Our Services</h2>
-            <h2 data-lang="es">Nuestros servicios</h2>
-
-        <section class="services">
-            <div class="service">
-                <div class="service-title" data-lang="en" style="display: none;">IT Consultancy</div>
-                <div class="service-title" data-lang="es">Consultoría de TI</div>
-                <div class="service-content" data-lang="en" style="display: none;">Optimize your technology strategy with our IT Consulting. Expert guidance to drive efficiency, innovation, and business growth</div>
-                <div class="service-content" data-lang="es">Optimiza tu estrategia tecnológica con nuestra Consultoría IT. Asesoría experta para impulsar eficiencia, innovación y crecimiento empresarial</div>
-            </div>
-            <div class="service">
-                <div class="service-title">DevOps</div>
-                <div class="service-content" data-lang="en" style="display: none;">Accelerate your software delivery with DevOps. Seamless collaboration, automation, and continuous improvement for high-performance teams</div>
-                <div class="service-content" data-lang="es">Acelera la entrega de software con DevOps. Colaboración fluida, automatización y mejora continua para equipos de alto rendimiento</div>
-            </div>
-            <div class="service">
-                <div class="service-title">GitOps</div>
-                <div class="service-content" data-lang="en" style="display: none;">Enhance automation and reliability with GitOps. Managing applications and infrastructure through version control for consistency and security</div>
-                <div class="service-content" data-lang="es">Mejora la automatización y confiabilidad con GitOps. Gestionando aplicaciones e infraestructura con control de versiones para mayor consistencia y seguridad</div>
-            </div>
-            <div class="service">
-                <div class="service-title" data-lang="en" style="display: none;">API Management</div>
-                <div class="service-title" data-lang="es">Gestión de APIs</div>
-                <div class="service-content" data-lang="en" style="display: none;">Unlock the full potential of your digital ecosystem with API Management. Secure, monitor, and optimize your APIs for seamless integration and scalability</div>
-                <div class="service-content" data-lang="es">Aprovecha todo el potencial de tu ecosistema digital con Gestión de APIs. Seguridad, monitoreo y optimización para integración y escalabilidad sin límites</div>
-            </div>
-            <div class="service">
-                <div class="service-title" data-lang="en" style="display: none;">Infrastructure as Code</div>
-                <div class="service-title" data-lang="es">Infraestructura como Código</div>
-                <div class="service-content" data-lang="en" style="display: none;">Automate, standardize, and scale your infrastructure effortlessly with Infrastructure as Code, ensuring consistency, speed, and reliability across all environments</div>
-                <div class="service-content" data-lang="es">Automatiza, estandariza y escala tu infraestructura con Infraestructura como Código, garantizando rapidez, consistencia y confiabilidad en todos los entornos</div>
-            </div>
-            <div class="service">
-                <div class="service-title" data-lang="en" style="display: none;">Cloud Solutions</div>
-                <div class="service-title" data-lang="es">Soluciones en la Nube</div>
-                <div class="service-content" data-lang="en" style="display: none;">Unlock the full potential of the cloud with our Cloud Solutions. Scalable, secure, and tailored to drive innovation and efficiency for your business</div>
-                <div class="service-content" data-lang="es">Aprovecha todo el potencial de la nube con nuestras Soluciones en la Nube. Seguras, escalables y diseñadas para impulsar la innovación y la eficiencia en tu negocio</div>
-            </div>
-            <div class="service">
-                <div class="service-title" data-lang="en" style="display: none;">Container Platforms</div>
-                <div class="service-title" data-lang="es">Plataformas de contenedores</div>
-                <div class="service-content" data-lang="en" style="display: none;">Deploy, manage, and scale applications seamlessly with Container Platforms. Enhancing agility, portability, and performance across cloud and on-premises environments</div>
-                <div class="service-content" data-lang="es">Despliega, gestiona y escala aplicaciones de manera ágil con Plataformas de Contenedores. Maximizando portabilidad, rendimiento y flexibilidad en la nube y entornos locales</div>
-            </div>
-            <div class="service">
-                <div class="service-title" data-lang="en" style="display: none;">Observability</div>
-                <div class="service-title" data-lang="es">Observabilidad</div>
-                <div class="service-content" data-lang="en" style="display: none;">Gain deep insights into your systems with Observability. Monitor, analyze, and optimize performance in real-time to ensure reliability and efficiency</div>
-                <div class="service-content" data-lang="es">Obtén visibilidad total de tus sistemas con Observabilidad. Monitorea, analiza y optimiza el rendimiento en tiempo real para garantizar confiabilidad y eficiencia</div>
-            </div>
-            <div class="service">
-                <div class="service-title" data-lang="en" style="display: none;">IoT Solutions</div>
-                <div class="service-title" data-lang="es">Soluciones IoT</div>
-                <div class="service-content" data-lang="en" style="display: none;">Connect, automate, and innovate with our IoT Solutions. Transforming data into actionable insights to drive smarter business decisions</div>
-                <div class="service-content" data-lang="es">Conecta, automatiza e innova con nuestras Soluciones IoT. Transformando datos en información valiosa para impulsar decisiones más inteligentes</div>
+                <div class="hero-visual reveal" style="--d:2">
+                    <div class="hero-photo">
+                        <img src="images/photos/hero-datacenter-880.webp"
+                             srcset="images/photos/hero-datacenter-520.webp 520w, images/photos/hero-datacenter-880.webp 880w"
+                             sizes="(max-width: 960px) 90vw, 460px"
+                             width="880" height="1040" fetchpriority="high"
+                             data-i18n-attr="alt:img.hero" alt="Server cooling fans lit in purple and pink inside a data center">
+                    </div>
+                    <div class="float-card terminal" aria-hidden="true">
+                        <div class="terminal-bar"><i></i><i></i><i></i><span>platform · prod</span></div>
+                        <ol class="terminal-body">
+                            <li><span class="prompt">$</span> terraform apply</li>
+                            <li class="ok">✓ Apply complete · 42 added</li>
+                            <li><span class="prompt">$</span> argocd app sync payments</li>
+                            <li class="ok">✓ Synced · Healthy</li>
+                            <li><span class="prompt">$</span> kubectl get pods -n prod</li>
+                            <li class="ok">✓ 12/12 running</li>
+                        </ol>
+                    </div>
+                    <div class="float-card status" aria-hidden="true">
+                        <span class="status-dot"></span>
+                        <span>
+                            <strong data-i18n="hero.card">Deployment succeeded</strong>
+                            <small>main → production</small>
+                        </span>
+                    </div>
+                </div>
             </div>
         </section>
-    </section>
 
-    <section id="technologies"  class="clients-section">
-        <h2 data-lang="en" style="display: none;">Technologies</h2>
-        <h2 data-lang="es">Tecnologías</h2>
-        <p data-lang="en" style="display: none;">Empowering businesses with cutting-edge technologies. Explore our expertise across the latest platforms and tools that drive innovation and efficiency</p>
-        <p data-lang="es">Impulsamos negocios con tecnologías de vanguardia. Descubre nuestra experiencia en las plataformas y herramientas más innovadoras</p>
-        <div class="capabilities">
-            <div class="grid">
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box">
-                        <h3 data-lang="en" style="display: none;">DEVELOPMENT</h3>
-                        <h3 data-lang="es">DESARROLLO</h3>
-                        <div class="box-content">
-                            <p>Python</p>
-                            <p>NodeJS</p>
-                            <p>Java</p>
-                        </div>
+        <!-- ============ CLIENTS ============ -->
+        <section class="clients" id="clients" aria-labelledby="clients-title">
+            <div class="container">
+                <h2 class="clients-title" id="clients-title" data-i18n="clients.title">Trusted by teams at</h2>
+                <ul class="client-list">
+                    <li class="client client-wide" title="IBM">
+                        <img src="images/clients/ibm.webp" width="320" height="120" alt="IBM" loading="lazy">
+                    </li>
+                    <li class="client client-wide" title="NTT DATA">
+                        <img src="images/clients/ntt-data.webp" width="320" height="66" alt="NTT DATA" loading="lazy">
+                    </li>
+                    <li class="client" title="Volvo Cars">
+                        <img src="images/clients/volvo-cars.webp" width="160" height="160" alt="Volvo Cars" loading="lazy">
+                    </li>
+                    <li class="client client-wide" title="Ibermática">
+                        <img src="images/clients/ibermatica.webp" width="320" height="127" alt="Ibermática" loading="lazy">
+                    </li>
+                    <li class="client" title="Canvia">
+                        <img src="images/clients/canvia.webp" width="129" height="129" alt="Canvia" loading="lazy">
+                    </li>
+                    <li class="client" title="Atentus">
+                        <img src="images/clients/atentus.webp" width="160" height="160" alt="Atentus" loading="lazy">
+                    </li>
+                    <li class="client" title="Orcan Intelligence">
+                        <img src="images/clients/orcan.webp" width="150" height="149" alt="Orcan Intelligence" loading="lazy">
+                    </li>
+                    <li class="client" title="Silverlink Technologies">
+                        <img src="images/clients/silverlink.webp" width="135" height="160" alt="Silverlink Technologies" loading="lazy">
+                    </li>
+                    <li class="client client-wide" title="R&amp;F Lawyers">
+                        <img src="images/clients/rf-lawyers.webp" width="320" height="105" alt="R&amp;F Lawyers" loading="lazy">
+                    </li>
+                </ul>
+
+                <!-- Add future partners (Red Hat, n8n, ...) as extra <li class="partner"> items -->
+                <h2 class="clients-title partners-title" data-i18n="partners.title">Certified partner of</h2>
+                <ul class="partner-list">
+                    <li class="partner">
+                        <img src="images/partners/monday.webp" width="480" height="88" alt="monday.com" loading="lazy">
+                        <span class="partner-label">
+                            <svg class="icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 12 2.5 2.5 4.5-5"/><circle cx="12" cy="12" r="9"/></svg>
+                            <span data-i18n="partners.certified">Certified Partner</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ SERVICES ============ -->
+        <section class="section services" id="services" aria-labelledby="services-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow" data-i18n="services.eyebrow">What we do</p>
+                    <h2 id="services-title" data-i18n="services.title">End-to-end expertise for modern infrastructure</h2>
+                    <p class="section-lead" data-i18n="services.lead">From strategy to production, we cover every layer of your platform.</p>
+                </header>
+
+                <article class="service-featured reveal">
+                    <div class="featured-copy">
+                        <span class="featured-tag" data-i18n="services.ai.tag">New</span>
+                        <h3 data-i18n="services.ai.title">AI &amp; Intelligent Automation</h3>
+                        <p data-i18n="services.ai.text">We don't stop at the prototype: we deploy n8n workflows and LLM applications on secure, observable infrastructure — self-hosted on your Kubernetes or cloud, so your data stays yours.</p>
+                        <ul class="chips">
+                            <li>LangChain</li><li>n8n</li><li>RAG</li><li data-i18n="services.ai.chipAgents">AI agents</li><li data-i18n="services.ai.chipVector">Vector databases</li><li>monday.com</li>
+                        </ul>
+                    </div>
+                    <ul class="featured-list">
+                        <li>
+                            <span class="icon-badge icon-badge-sm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
+                            <div>
+                                <h4 data-i18n="services.ai.u1.title">Knowledge assistants</h4>
+                                <p data-i18n="services.ai.u1.text">Chat with your own documentation, policies and tickets using retrieval-augmented generation (RAG).</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon-badge icon-badge-sm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M9 6h4a2 2 0 0 1 2 2v7"/><path d="m12.5 12.5 2.5 2.5 2.5-2.5"/></svg></span>
+                            <div>
+                                <h4 data-i18n="services.ai.u2.title">Workflow automation with n8n &amp; monday.com</h4>
+                                <p data-i18n="services.ai.u2.text">Connect your CRM, email, ticketing and internal systems to remove repetitive manual work.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon-badge icon-badge-sm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2"/><rect x="6" y="6" width="12" height="12" rx="3"/><path d="M10 11h.01M14 11h.01M10 14.5c1.2.8 2.8.8 4 0"/></svg></span>
+                            <div>
+                                <h4 data-i18n="services.ai.u3.title">AI agents</h4>
+                                <p data-i18n="services.ai.u3.text">LangChain-based agents that act on your APIs and data, with guardrails and monitoring built in.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+
+                <div class="service-grid">
+                    <article class="service-card reveal">
+                        <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
+                        <h3 data-i18n="services.s1.title">IT Consultancy</h3>
+                        <p data-i18n="services.s1.text">Technology strategy and expert guidance to drive efficiency, innovation and business growth.</p>
+                    </article>
+                    <article class="service-card reveal" style="--d:1">
+                        <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c-2-2.7-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.3 6-4Zm0 0c2 2.7 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.3-6 4Z"/></svg></span>
+                        <h3>DevOps</h3>
+                        <p data-i18n="services.s2.text">Faster, safer software delivery through automation, CI/CD and continuous improvement.</p>
+                    </article>
+                    <article class="service-card reveal" style="--d:2">
+                        <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2.5"/><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M6 8.5v7M18 10.5c0 4-4 5-9.5 6.5"/></svg></span>
+                        <h3>GitOps</h3>
+                        <p data-i18n="services.s3.text">Applications and infrastructure managed declaratively from Git — consistent, auditable and secure.</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/></svg></span>
+                        <h3 data-i18n="services.s4.title">API Management</h3>
+                        <p data-i18n="services.s4.text">Secure, monitor and scale your APIs for seamless integration across your digital ecosystem.</p>
+                    </article>
+                    <article class="service-card reveal" style="--d:1">
+                        <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M10 12l-2 2 2 2M14 12l2 2-2 2"/></svg></span>
+                        <h3 data-i18n="services.s5.title">Infrastructure as Code</h3>
+                        <p data-i18n="services.s5.text">Automated, standardized and repeatable environments — consistent from development to production.</p>
+                    </article>
+                    <article class="service-card reveal" style="--d:2">
+                        <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H8a6 6 0 1 1 5.7-7.9A4.5 4.5 0 1 1 17.5 19Z"/></svg></span>
+                        <h3 data-i18n="services.s6.title">Cloud Solutions</h3>
+                        <p data-i18n="services.s6.text">Scalable, secure architectures on AWS, Azure and Google Cloud, tailored to your business.</p>
+                    </article>
+                    <article class="service-card reveal">
+                        <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 7.5-9-5-9 5 9 5 9-5Z"/><path d="M3 7.5v9l9 5 9-5v-9M12 12.5v9"/></svg></span>
+                        <h3 data-i18n="services.s7.title">Container Platforms</h3>
+                        <p data-i18n="services.s7.text">Run applications on Kubernetes and OpenShift with agility and portability — in the cloud or on-premises.</p>
+                    </article>
+                    <article class="service-card reveal" style="--d:1">
+                        <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 8-6-16-3 8H2"/></svg></span>
+                        <h3 data-i18n="services.s8.title">Observability</h3>
+                        <p data-i18n="services.s8.text">Real-time visibility into your systems to detect issues early and optimize performance.</p>
+                    </article>
+                    <article class="service-card reveal" style="--d:2">
+                        <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></svg></span>
+                        <h3 data-i18n="services.s9.title">IoT Solutions</h3>
+                        <p data-i18n="services.s9.text">Connect devices and turn their data into actionable insights for smarter decisions.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ WHY ============ -->
+        <section class="section why" id="why" aria-labelledby="why-title">
+            <div class="container why-grid">
+                <div class="why-media reveal">
+                    <img class="why-photo-main" src="images/photos/engineer-800.webp"
+                         srcset="images/photos/engineer-480.webp 480w, images/photos/engineer-800.webp 800w"
+                         sizes="(max-width: 960px) 80vw, 440px"
+                         width="800" height="1000" loading="lazy"
+                         data-i18n-attr="alt:img.engineer" alt="Engineer working on code across several monitors">
+                    <img class="why-photo-secondary" src="images/photos/team-480.webp"
+                         srcset="images/photos/team-480.webp 480w, images/photos/team-900.webp 900w"
+                         sizes="(max-width: 960px) 50vw, 300px"
+                         width="900" height="640" loading="lazy"
+                         data-i18n-attr="alt:img.team" alt="Two engineers reviewing code together in an office">
+                    <div class="why-badge">
+                        <strong>6+</strong>
+                        <span data-i18n="why.badge">years building platforms in production</span>
                     </div>
                 </div>
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box">
-                        <h3 data-lang="en" style="display: none;">API MANAGEMENT</h3>
-                        <h3 data-lang="es">GESTIÓN DE APIS</h3>
-                        <div class="box-content">
-                            <p>3Scale</p>
-                            <p>Kong</p>
-                            <p>Azure APIM</p>
-                            <p>AWS API Gateway</p>
-                        </div>
+
+                <div class="why-copy">
+                    <header class="reveal">
+                        <p class="eyebrow" data-i18n="why.eyebrow">Why Misof</p>
+                        <h2 id="why-title" data-i18n="why.title">Engineers who build, not just advise</h2>
+                        <p class="section-lead" data-i18n="why.lead">We work alongside your team to design, implement and hand over platforms that are secure, automated and easy to operate.</p>
+                    </header>
+                    <ul class="feature-list">
+                        <li class="reveal">
+                            <span class="icon-badge icon-badge-sm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1M16 3h1a2 2 0 0 1 2 2v5a2 2 0 0 0 2 2 2 2 0 0 0-2 2v5a2 2 0 0 1-2 2h-1"/></svg></span>
+                            <div>
+                                <h3 data-i18n="why.f1.title">Everything as code</h3>
+                                <p data-i18n="why.f1.text">Infrastructure, pipelines and policies that are versioned, reviewed and repeatable.</p>
+                            </div>
+                        </li>
+                        <li class="reveal" style="--d:1">
+                            <span class="icon-badge icon-badge-sm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 12 10 5 10-5M2 17l10 5 10-5"/></svg></span>
+                            <div>
+                                <h3 data-i18n="why.f2.title">Vendor-neutral</h3>
+                                <p data-i18n="why.f2.text">We recommend what fits your context — AWS, Azure, Google Cloud or on-premises.</p>
+                            </div>
+                        </li>
+                        <li class="reveal" style="--d:2">
+                            <span class="icon-badge icon-badge-sm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2ZM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7Z"/></svg></span>
+                            <div>
+                                <h3 data-i18n="why.f3.title">Knowledge transfer</h3>
+                                <p data-i18n="why.f3.text">Documentation and hands-on training so your team fully owns the result.</p>
+                            </div>
+                        </li>
+                        <li class="reveal" style="--d:3">
+                            <span class="icon-badge icon-badge-sm"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10Z"/></svg></span>
+                            <div>
+                                <h3 data-i18n="why.f4.title">Europe &amp; LATAM</h3>
+                                <p data-i18n="why.f4.text">Bilingual collaboration in Spanish and English, with overlapping working hours.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TECHNOLOGIES ============ -->
+        <section class="section section-dark tech" id="technologies" aria-labelledby="tech-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow eyebrow-dark" data-i18n="tech.eyebrow">Technologies</p>
+                    <h2 id="tech-title" data-i18n="tech.title">Deep expertise across the modern stack</h2>
+                    <p class="section-lead" data-i18n="tech.lead">We work with the platforms and tools that power today's most reliable systems.</p>
+                </header>
+
+                <div class="tech-grid">
+                    <div class="tech-card reveal">
+                        <h3 data-i18n="tech.infra">Infrastructure</h3>
+                        <ul class="chips"><li>AWS</li><li>Azure</li><li>Google Cloud</li><li data-i18n="tech.onprem">On-premises</li></ul>
+                    </div>
+                    <div class="tech-card reveal" style="--d:1">
+                        <h3 data-i18n="tech.containers">Container platforms</h3>
+                        <ul class="chips"><li>Kubernetes</li><li>OpenShift</li><li>AKS</li><li>EKS</li><li>Rancher</li><li>Tanzu</li></ul>
+                    </div>
+                    <div class="tech-card reveal" style="--d:2">
+                        <h3 data-i18n="tech.iac">Automation &amp; IaC</h3>
+                        <ul class="chips"><li>Terraform</li><li>Ansible</li><li>Bicep</li><li>CloudFormation</li></ul>
+                    </div>
+                    <div class="tech-card reveal">
+                        <h3>DevOps</h3>
+                        <ul class="chips"><li data-i18n="tech.git">Git management</li><li data-i18n="tech.cicd">CI/CD tooling</li><li data-i18n="tech.sca">Static code analysis</li><li data-i18n="tech.artifacts">Artifact management</li></ul>
+                    </div>
+                    <div class="tech-card reveal" style="--d:1">
+                        <h3>GitOps</h3>
+                        <ul class="chips"><li>Argo CD</li><li>Flux</li></ul>
+                    </div>
+                    <div class="tech-card reveal" style="--d:2">
+                        <h3 data-i18n="tech.observability">Observability</h3>
+                        <ul class="chips"><li>Elastic</li><li>Datadog</li><li>Grafana</li><li>New Relic</li><li>Dynatrace</li></ul>
+                    </div>
+                    <div class="tech-card reveal">
+                        <h3 data-i18n="tech.api">API management</h3>
+                        <ul class="chips"><li>3scale</li><li>Kong</li><li>Azure APIM</li><li>AWS API Gateway</li></ul>
+                    </div>
+                    <div class="tech-card reveal" style="--d:1">
+                        <h3 data-i18n="tech.lb">Load balancing</h3>
+                        <ul class="chips"><li>NGINX</li><li>Apache</li><li>F5 BIG-IP</li></ul>
+                    </div>
+                    <div class="tech-card reveal" style="--d:2">
+                        <h3 data-i18n="tech.dev">Development</h3>
+                        <ul class="chips"><li>Python</li><li>Node.js</li><li>Java</li></ul>
+                    </div>
+                    <div class="tech-card reveal">
+                        <h3 data-i18n="tech.ai">AI &amp; MLOps</h3>
+                        <ul class="chips"><li>LangChain</li><li>n8n</li><li>SageMaker</li><li>Pinecone</li><li>Chroma</li></ul>
                     </div>
                 </div>
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box">
-                        <h3 data-lang="en" style="display: none;">LOAD BALANCERS</h3>
-                        <h3 data-lang="es">BALANCEADORES DE CARGA</h3>
-                        <div class="box-content">
-                            <p>NGINX</p>
-                            <p>Apache</p>
-                            <p>Cisco F5</p>
-                        </div>
+            </div>
+        </section>
+
+        <!-- ============ APPROACH ============ -->
+        <section class="section approach" id="approach" aria-labelledby="approach-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow" data-i18n="approach.eyebrow">How we work</p>
+                    <h2 id="approach-title" data-i18n="approach.title">A clear path from idea to production</h2>
+                </header>
+                <ol class="steps">
+                    <li class="step reveal">
+                        <span class="step-num">01</span>
+                        <h3 data-i18n="approach.s1.title">Assess</h3>
+                        <p data-i18n="approach.s1.text">We review your current architecture, processes and goals to find the highest-impact opportunities.</p>
+                    </li>
+                    <li class="step reveal" style="--d:1">
+                        <span class="step-num">02</span>
+                        <h3 data-i18n="approach.s2.title">Design</h3>
+                        <p data-i18n="approach.s2.text">We define a target architecture and a pragmatic roadmap aligned with your business priorities.</p>
+                    </li>
+                    <li class="step reveal" style="--d:2">
+                        <span class="step-num">03</span>
+                        <h3 data-i18n="approach.s3.title">Build</h3>
+                        <p data-i18n="approach.s3.text">We implement iteratively — automated, tested and documented from day one.</p>
+                    </li>
+                    <li class="step reveal" style="--d:3">
+                        <span class="step-num">04</span>
+                        <h3 data-i18n="approach.s4.title">Operate &amp; evolve</h3>
+                        <p data-i18n="approach.s4.text">We support, monitor and continuously improve your platform while transferring knowledge to your team.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section class="section section-dark contact" id="contact" aria-labelledby="contact-title">
+            <img class="contact-bg" src="images/photos/city-night-1600.webp"
+                 srcset="images/photos/city-night-800.webp 800w, images/photos/city-night-1600.webp 1600w"
+                 sizes="100vw" width="1600" height="800" alt="" loading="lazy">
+            <div class="container contact-grid">
+                <div class="contact-copy reveal">
+                    <p class="eyebrow eyebrow-dark" data-i18n="contact.eyebrow">Contact</p>
+                    <h2 id="contact-title" data-i18n="contact.title">Let's build something reliable together</h2>
+                    <p class="section-lead" data-i18n="contact.lead">Tell us about your challenge — a migration, a new platform or a pipeline that needs fixing — and we'll get back to you shortly.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary btn-lg" href="mailto:lpareja@misofconsulting.com?subject=Misof%20Consulting%20-%20New%20inquiry">
+                            <svg class="icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+                            <span data-i18n="contact.email">Send us an email</span>
+                        </a>
+                        <a class="btn btn-ghost btn-lg" href="tel:+34642001295">
+                            <svg class="icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+                            <span data-i18n="contact.call">Call us</span>
+                        </a>
                     </div>
                 </div>
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box">
-                        <h3 data-lang="en" style="display: none;">CONTAINER PLATFORM</h3>
-                        <h3 data-lang="es">PLATAFORMAS DE CONTENEDORES</h3>
-                        <div class="box-content">
-                            <p>Kubernetes</p>
-                            <p>AKS</p>
-                            <p>Rancher</p>
-                            <p>OpenShift</p>
-                            <p>EKS</p>
-                            <p>Tanzu</p>
+
+                <div class="contact-card reveal" style="--d:1">
+                    <div class="contact-card-head">
+                        <svg class="brand-mark" viewBox="0 0 767 524" aria-hidden="true"><polygon fill="#C237DB" points="212,0 370,158 370,466 366,469 228,333"/><polygon fill="#A030F2" points="555,0 397,158 397,466 401,469 539,333"/><rect fill="#F230C7" width="228" height="524" rx="18"/><rect fill="#672EE8" x="539" width="228" height="524" rx="18"/></svg>
+                        <div>
+                            <strong>Misof Consulting</strong>
+                            <span class="availability"><span class="status-dot"></span><span data-i18n="contact.available">Available for new projects</span></span>
                         </div>
                     </div>
-                </div>
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box">
-                        <h3 data-lang="en" style="display: none;">OBSERVABILITY</h3>
-                        <h3 data-lang="es">OBSERVABILIDAD</h3>
-                        <div class="box-content">
-                            <p>Elastic</p>
-                            <p>DataDog</p>
-                            <p>Grafana</p>
-                            <p>New Relic</p>
-                            <p>Dynatrace</p>
+                    <dl class="contact-list">
+                        <div>
+                            <dt data-i18n="contact.emailLabel">Email</dt>
+                            <dd>
+                                <a href="mailto:lpareja@misofconsulting.com">lpareja@misofconsulting.com</a>
+                                <button type="button" class="copy-btn" data-copy="lpareja@misofconsulting.com">
+                                    <svg class="icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+                                    <span data-copy-label data-i18n="contact.copy">Copy</span>
+                                </button>
+                            </dd>
                         </div>
-                    </div>
-                </div>
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box">
-                        <h3 data-lang="en" style="display: none;">AUTOMATION & IaC</h3>
-                        <h3 data-lang="es">AUTOMATIZACIÓN & INFRAESTRUCTURA COMO CÓDIGO</h3>
-                        <div class="box-content">
-                            <p>Ansible</p>
-                            <p>Terraform</p>
-                            <p>Bicep</p>
-                            <p>CloudFormation</p>
+                        <div>
+                            <dt data-i18n="contact.phoneLabel">Phone</dt>
+                            <dd><a href="tel:+34642001295">+34 642 001 295</a></dd>
                         </div>
-                    </div>
-                </div>
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box">
-                        <h3>DEVOPS</h3>
-                        <div class="box-content">
-                            <p>Git Management</p>
-                            <p>CICD Tools</p>
-                            <p>Static Code Analysis</p>
-                            <p>Artifact Management</p>
+                        <div>
+                            <dt data-i18n="contact.languagesLabel">Languages</dt>
+                            <dd data-i18n="contact.languages">Spanish · English</dd>
                         </div>
-                    </div>
+                    </dl>
                 </div>
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box">
-                        <h3>GITOPS</h3>
-                        <div class="box-content">
-                            <p>ArgoCD</p>
-                            <p>Flux</p>
-                        </div>
-                    </div>
-                </div>
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box">
-                        <h3>MLOPS</h3>
-                        <div class="box-content">
-                            <p>SageMaker</p>
-                            <p>Langchain</p>
-                            <p>Pinecone</p>
-                            <p>Chroma</p>
-                        </div>
-                    </div>
-                </div>
-                <div onclick="toggleBoxContent(this)">
-                    <div class="box infrastructure">
-                        <h3 data-lang="en" style="display: none;">INFRASTRUCTURE</h3>
-                        <h3 data-lang="es">INFRAESTRUCTURA</h3>
-                        <div class="box-content">
-                            <p>AWS</p>
-                            <p>Azure</p>
-                            <p>Google Cloud</p>
-                            <p>OnPremise</p>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="#top" data-i18n-attr="aria-label:a11y.home" aria-label="Misof Consulting — home">
+                    <svg class="brand-mark" viewBox="0 0 767 524" aria-hidden="true"><polygon fill="#C237DB" points="212,0 370,158 370,466 366,469 228,333"/><polygon fill="#A030F2" points="555,0 397,158 397,466 401,469 539,333"/><rect fill="#F230C7" width="228" height="524" rx="18"/><rect fill="#672EE8" x="539" width="228" height="524" rx="18"/></svg>
+                    <span class="brand-text"><span class="brand-name">MISOF</span><span class="brand-sub">CONSULTING</span></span>
+                </a>
+                <p data-i18n="footer.tagline">IT consultancy specialized in cloud, DevOps and platform engineering.</p>
+            </div>
+            <nav class="footer-col" data-i18n-attr="aria-label:a11y.footerNav" aria-label="Footer">
+                <h2 data-i18n="footer.explore">Explore</h2>
+                <a href="#services" data-i18n="nav.services">Services</a>
+                <a href="#why" data-i18n="nav.why">Why Misof</a>
+                <a href="#technologies" data-i18n="nav.technologies">Technologies</a>
+                <a href="#approach" data-i18n="nav.approach">How we work</a>
+            </nav>
+            <div class="footer-col">
+                <h2 data-i18n="footer.contact">Contact</h2>
+                <a href="mailto:lpareja@misofconsulting.com">lpareja@misofconsulting.com</a>
+                <a href="tel:+34642001295">+34 642 001 295</a>
+            </div>
+            <div class="footer-col">
+                <h2 data-i18n="footer.legal">Legal</h2>
+                <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
             </div>
         </div>
-    </section>
-
-    <section id="clients" class="clients-section">
-        <h2 data-lang="en" style="display: none;">Trusted by Industry Leaders</h2>
-        <h2 data-lang="es">Líderes en la industria confían en nosotros</h2>
-        <div class="clients-container">
-            <div class="client-card">
-                <img src="images/orcan_logo.png" alt="Orcan">
-                <p>Orcan Intelligence</p>
-            </div>
-            <div class="client-card">
-                <img src="images/ibermatica-logo.png" alt="Ibermatica">
-                <p>Ibermática</p>
-            </div>
-            <div class="client-card">
-                <img src="images/silverlink_logo.png" alt="Silverlink">
-                <p>Silverlink Technologies</p>
-            </div>
-            <div class="client-card">
-                <img src="images/canvia_logo.jpg" alt="canvia">
-                <p>Canvia</p>
-            </div>
-            <div class="client-card">
-                <img src="images/atentus_logo.jpg" alt="atentus">
-                <p>Atentus</p>
-            </div>
+        <div class="container footer-bottom">
+            <p>&copy; <span data-year>2026</span> Misof Consulting. <span data-i18n="footer.rights">All rights reserved.</span></p>
         </div>
-    </section>
-    
-    
-    <section id="contact" class="clients-section">
-        <h2 data-lang="en" style="display: none;">Contact Us</h2>
-        <h2 data-lang="es">Contáctanos</h2>
-        <p>Email: lpareja@misofconsulting.com</p>
-        <p data-lang="en" style="display: none;">Phone: +34 642 001 295</p>
-        <p data-lang="es">Teléfono: +34 642 001 295</p>
-    </section>
-    
-    <footer>
-        <p data-lang="es">&copy; 2025 Misof Consulting. Todos los derechos reservados.</p>
-        <p data-lang="en" style="display: none;">&copy; 2025 Misof Consulting. All rights reserved.</p>
     </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
